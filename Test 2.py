@@ -1,28 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 """ Trains an agent with (stochastic) Policy Gradients on Pong. Uses OpenAI Gym. """
 import numpy as np
 import pickle as pickle
 
-
-# In[3]:
-
-
 #pip install --user gym
 
-
-# In[4]:
-
-
 import gym
-
-
-# In[5]:
-
 
 # hyperparameters
 H = 200 # number of hidden layer neurons
@@ -82,27 +67,11 @@ def policy_backward(eph, epdlogp):
   dW1 = np.dot(dh.T, epx)
   return {'W1':dW1, 'W2':dW2}
 
-
-# In[7]:
-
-
 env = gym.make("Pong-v0")
-
-
-# In[ ]:
-
 
 #pip install gym[atari]
 
-
-# In[7]:
-
-
 #pip install gym[accept-rom-license]
-
-
-# In[18]:
-
 
 env = gym.make("Pong-v0")
 observation = env.reset()
@@ -111,11 +80,6 @@ xs,hs,dlogps,drs = [],[],[],[]
 running_reward = None
 reward_sum = 0
 episode_number = 0
-
-
-
-
-# In[44]:
 
 
 env = gym.make("Pong-v0") if not render else gym.make("Pong-v0",render_mode='human')
@@ -190,9 +154,6 @@ while True:
 
   if reward != 0: # Pong has either +1 or -1 reward exactly when game ends.
     print ('ep %d: game finished, reward: %f' % (episode_number, reward) + ('' if reward == -1 else ' !!!!!!!!'))
-
-
-# In[ ]:
 
 
 
